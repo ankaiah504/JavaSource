@@ -1,0 +1,117 @@
+Static Binding and Dynamic Binding
+
+When type of the object is determined at compiled time(by the compiler), it is known as static binding.
+
+If there is any private, final or static method in a class, there is static binding.
+
+When type of the object is determined at run-time, it is known as dynamic binding.
+
+Java Immutable Class:
+
+we can also create our own custom immutable classes. Here's what we need to do to create an immutable class.
+declare the class as final so it cannot be extended
+all class members should be private so they cannot be accessed outside of class
+shouldn't contain any setter methods to change the value of class members
+the getter method should return the copy of class members
+class members are only initialized using constructor
+
+// class is declared final
+final class Immutable {
+
+  // private class members
+  private String name;
+  private int date;
+
+  Immutable(String name, int date) {
+
+    // class members are initialized using constructor
+    this.name = name;
+    this.date = date;
+  }
+
+  // getter method returns the copy of class members
+  public String getName() {
+    return name;
+  }
+
+  public int getDate() {
+    return date;
+  }
+
+}
+
+
+Java Singleton:
+Sytax:
+
+class SingletonExample {
+
+   // private field that refers to the object
+   private static SingletonExample singleObject;  //a reference to the object of the class.
+                                              
+   private SingletonExample() {    // a private constructor that restricts creating objects outside of the class.
+      // constructor of the SingletonExample class
+   }
+
+   public static SingletonExample getInstance() {  //this method returns the reference to the only object of the class. Since the method static, it can be accessed using the class name.
+      // write code that allows us to create only one object
+      // access the object as per our need
+   }
+}
+
+Example:
+class Database {
+   private static Database dbObject;
+
+   private Database() {      
+   }
+
+   public static Database getInstance() {
+
+      // create object if it's not already created
+      if(dbObject == null) {
+         dbObject = new Database();
+      }
+
+       // returns the singleton object
+       return dbObject;
+   }
+
+   public void getConnection() {
+       System.out.println("You are now connected to the database.");
+   }
+}
+
+class Main {
+   public static void main(String[] args) {
+      Database db1;
+
+      // refers to the only object of Database
+      db1= Database.getInstance();
+      
+      db1.getConnection();
+   }
+}
+
+
+HashMap:
+1. Does hashmap allow you to store null values?
+
+Yes, We can store as many null values in a hashmap as we want but only one null key can be stored not more than that.
+
+2. Can you store multiple keys with the same value in a hashmap?
+
+No, multiple keys with the same value can’t be stored in a hashmap.
+
+3.What is collision in HashMap?
+A collision occurs when more than one key generates the same hashCode() value.
+
+Collection	:
+To reprasent a group of object as single entity is called collection
+It is an interface.
+Collections: Using It defines a number of useful methods for working with collections.It is a utility class.
+It only has static methods in it.
+
+
+
+
